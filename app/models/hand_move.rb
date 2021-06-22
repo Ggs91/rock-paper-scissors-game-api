@@ -1,0 +1,2 @@
+class HandMove < ApplicationRecord
+end
