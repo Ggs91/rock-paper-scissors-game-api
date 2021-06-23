@@ -1,7 +1,8 @@
 class CreatePlayers < ActiveRecord::Migration[5.2]
   def change
     create_table :players do |t|
-      t.string :name
+      t.string :name, null: false
+      t.references :game, null: false, foreign_key: true, index: true
 
       t.timestamps
     end

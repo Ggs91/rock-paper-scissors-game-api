@@ -16,21 +16,27 @@ ActiveRecord::Schema.define(version: 2021_06_22_210006) do
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.string "winner"
+    t.string "winner", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "hand_moves", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
+    t.bigint "player_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_hand_moves_on_player_id"
   end
 
   create_table "players", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
+    t.bigint "game_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_players_on_game_id"
   end
 
+  add_foreign_key "hand_moves", "players"
+  add_foreign_key "players", "games"
 end
