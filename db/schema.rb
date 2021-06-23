@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_06_22_210006) do
 
   create_table "hand_moves", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "player_id", null: false
+    t.bigint "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["player_id"], name: "index_hand_moves_on_player_id"
