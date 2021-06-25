@@ -1,4 +1,8 @@
 class Game < ApplicationRecord
-  validates :winner, presence: true, on: :update
   has_many :players
+  has_one :winner, class_name: 'Player'
+
+  def result
+    self.winner.nil? ? 'tie' : "#{self.winner.name} wins"
+  end
 end
