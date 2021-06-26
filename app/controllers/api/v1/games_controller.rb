@@ -10,8 +10,8 @@ class Api::V1::GamesController < ApplicationController
       render json: result[:errors], status: :unprocessable_entity
     else
       game = Game.new
-      game.players << [initialized_players[:players][:player], initialized_players[:players][:bot]]
-      game_result = PlayRockPaperScissors.new(initialized_players).perform
+      game_result = PlayRockPaperScissors.new(initialized_players[:players]).perform
+      game.players << [game_result[:players][:player], game_result[:players][:bot]]
       game.winner = game_result[:winner]
 
       if game.save
