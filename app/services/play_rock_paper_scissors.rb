@@ -1,7 +1,7 @@
 class PlayRockPaperScissors
   def initialize(players)
-    @player = players[:players][:player]
-    @bot = players[:players][:bot]
+    @player = players[:player]
+    @bot = players[:bot]
     @winner = nil
   end
 
@@ -10,8 +10,11 @@ class PlayRockPaperScissors
     result = winning_move(@player.hand_move.name, @bot.hand_move.name)
     set_winner(result)
     {
-      players: [@player, @bot],
-      winner: @winner,
+      players: {
+        player: @player,
+        bot: @bot
+      },
+      winner: @winner
     }
   end
 
