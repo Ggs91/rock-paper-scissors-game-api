@@ -1,6 +1,8 @@
 class Api::V1::GamesController < ApplicationController
   def index
     @games = Game.order(created_at: :desc)
+
+    render "index.json", status: :ok
   end
 
   def create
