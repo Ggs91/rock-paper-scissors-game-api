@@ -1,12 +1,11 @@
 class PlayRockPaperScissors
-  def initialize(players)
-    @player = players[:player]
-    @bot = players[:bot]
+  def initialize(player)
+    @player = player
     @winner = nil
   end
 
   def perform
-    bot_play
+    create_bot
     result = winning_move(@player.hand_move.name, @bot.hand_move.name)
     set_winner(result)
     {
@@ -20,9 +19,11 @@ class PlayRockPaperScissors
 
   private
 
-  def bot_play
+  def create_bot
+    @bot = Player.new(name: 'Bot')
     bot_move = %w{rock paper scissors}.sample
-    @bot.hand_move = HandMove.find_by(name: bot_move)
+    @bot.hand_move = HandMove.create(name: bot_move)
+    @bot.save
   end
 
   def winning_move(first_move, second_move)
