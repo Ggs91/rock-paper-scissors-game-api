@@ -40,7 +40,7 @@ $ rails s
  - Select the body panel, then "raw" and select "JSON" format
  - Set the URL to `http://localhost:3000/api/v1/games`
 
-#####First endpoint:
+##### First endpoint:
 
 To play the game, we `POST` the player's `name` and `move` to the API.
 - Select `POST` on the dropdown button
@@ -53,7 +53,7 @@ To play the game, we `POST` the player's `name` and `move` to the API.
 }
 ```
 
-#####Second endpoint:
+##### Second endpoint:
 To retrieve past the game history, we send a `GET` request to the URL.
 - Select `GET` on the dropdown button
 - Click "send", you will receive a response back with the past games history.
