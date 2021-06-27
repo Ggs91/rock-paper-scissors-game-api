@@ -18,11 +18,11 @@ class Api::V1::GamesController < ApplicationController
           moves: [
             {
               name: game.players.first.name,
-              move: game.players.first.hand_move.name
+              move: game.players.first.hand_move
             },
             {
               name: game.players.second.name,
-              move: game.players.second.hand_move.name
+              move: game.players.second.hand_move
             }
           ],
           result: game.result
