@@ -1,24 +1,59 @@
-# README
+# Rock Paper Scissors API built with Ruby on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## I - Initialization
 
-Things you may want to cover:
+1. Clone the project: open a terminal and type in
+```
+$ git clone https://github.com/Ggs91/rock-paper-scissors-game-api
+```
+2. Change directory to `rock-paper-scissors-game-api`:
+```
+$ cd rock-paper-scissors-game-api
+```
+3. Download dependencies:
 
-* Ruby version
+```
+$ bundle install
+```
 
-* System dependencies
+4. Setup database:
+```
+$ rails db:create
+$ rails db:migrate
+```
 
-* Configuration
+5. Start the server:
+```
+$ rails s
+```
 
-* Database creation
+## II - Make a request to the API using Postman
 
-* Database initialization
+##### Available endpoints:
+- `POST/api/v1/games`: Play the game and save result in DB. Result response (includes moves, players name and result) is sent back.
+- `GET/api/v1/games`: Retrieve past games from DB.
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+##### To make a request with Postman, simply:
+ - Go to [https://www.postman.com/](https://www.postman.com/) or download the app
+ - Go to "My workspace" then click "Create a request"
+ - Select the body panel, then "raw" and select "JSON" format
+ - Set the URL to `http://localhost:3000/api/v1/games`
 
-* Deployment instructions
+#####First endpoint:
 
-* ...
+To play the game, we `POST` the player's `name` and `move` to the API.
+- Select `POST` on the dropdown button
+- Write the request body:
+
+```json
+{
+  "name": "Ponky",
+  "move": "rock"
+}
+```
+
+#####Second endpoint:
+To retrieve past the game history, we send a `GET` request to the URL.
+- Select `GET` on the dropdown button
+- Click "send", you will receive a response back with the past games history.
