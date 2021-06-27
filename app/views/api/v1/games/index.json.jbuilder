@@ -1,8 +1,11 @@
-json.array! @games do |game|
+json.total @games.size
+json.games @games do |game|
   json.moves do
-    json.name game.players.first.name
-    json.move game.players.first.hand_move.name
+    json.array! game.players do |player|
+      json.name player.name
+      json.move player.hand_move
+    end
   end
-
   json.result game.result
+  json.timestamps game.created_at.to_s(:db)
 end
