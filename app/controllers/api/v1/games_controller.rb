@@ -1,8 +1,10 @@
 class Api::V1::GamesController < ApplicationController
-  def index
-    @games = Game.order(created_at: :desc)
+  MAX_PAGINATION_LIMIT = 100
 
-    render 'index.json', status: :ok
+  def index
+    @games = Game.order(created_at: :desc).limit(limit).offset(params[:offset])
+
+    render :index, status: :ok
   end
 
   def create
@@ -16,7 +18,7 @@ class Api::V1::GamesController < ApplicationController
       @game.winner = game_result[:winner]
 
       if @game.save
-        render 'create.json', status: :created
+        render :create, status: :created
       else
         render json: @game.errors, status: :unprocessable_entity
       end
@@ -29,4 +31,10 @@ class Api::V1::GamesController < ApplicationController
     params.permit(:name, :move)
   end
 
+  def limit
+    [
+      params.fetch(:limit, MAX_PAGINATION_LIMIT).to_i,
+      MAX_PAGINATION_LIMIT
+    ].min
+  end
 end
