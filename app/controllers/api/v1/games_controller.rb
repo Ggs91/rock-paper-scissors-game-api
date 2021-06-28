@@ -6,7 +6,7 @@ class Api::V1::GamesController < ApplicationController
   end
 
   def create
-    initialized_player = PlayerInitializer.new(params).perform
+    initialized_player = PlayerInitializer.new(user_params).perform
     if initialized_player[:errors].any?
       render json: initialized_player[:errors], status: :unprocessable_entity
     else
@@ -21,6 +21,12 @@ class Api::V1::GamesController < ApplicationController
         render json: @game.errors, status: :unprocessable_entity
       end
     end
+  end
+
+  private
+
+  def user_params
+    params.permit(:name, :move)
   end
 
 end
