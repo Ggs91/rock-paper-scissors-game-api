@@ -53,6 +53,8 @@ To play the game, we `POST` the player's `name` and `move` to the API.
 }
 ```
 
+A response is sent back to the postman client, and result appears in the body response.
+
 ##### Second endpoint:
 To retrieve past the game history, we send a `GET` request to the URL.
 - Select `GET` on the dropdown button
