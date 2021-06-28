@@ -42,7 +42,7 @@ $ rails s
 
 ### 1. First endpoint:
 
-To play the game, we `POST` the player's `name` and `move` to the API.
+To play the game,`POST` player's `name` and `move` to the API.
 - Select `POST` on the dropdown button
 - Write the request body:
 
