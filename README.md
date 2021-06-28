@@ -56,6 +56,7 @@ To play the game, we `POST` the player's `name` and `move` to the API.
 A response is sent back to the postman client, and result appears in the body response.
 
 ##### 2.Second endpoint:
-To retrieve past the game history, we send a `GET` request to the URL.
+To retrieve past game history, send a `GET` request to the URL, you can specify `limit` and `offset` options for pagination:
 - Select `GET` on the dropdown button
-- Click "send", you will receive a response back with the past games history.
+- Add the options to the url (type `?` followed by the key value pairs), e.g: `http://localhost:3000/api/v1/games?limit=10&offset=5` will get the first 10 items starting from the 5th one. You can ommit either the limit (it will be 100 by default), or both, (it will retrieve the first 100 record).
+- Click "send", you will receive a response with an array of the requiered records.
