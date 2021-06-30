@@ -9,10 +9,7 @@ class PlayRockPaperScissors
     result = winning_move(@player.hand_move, @bot.hand_move)
     set_winner(result)
     {
-      players: {
-        player: @player,
-        bot: @bot
-      },
+      players: [@player, @bot],
       winner: @winner
     }
   end

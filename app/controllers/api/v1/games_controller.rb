@@ -14,7 +14,7 @@ class Api::V1::GamesController < ApplicationController
     else
       @game = Game.new
       game_result = PlayRockPaperScissors.new(initialized_player[:player]).perform
-      @game.players << [game_result[:players][:player], game_result[:players][:bot]]
+      @game.players << game_result[:players]
       @game.winner = game_result[:winner]
 
       if @game.save
