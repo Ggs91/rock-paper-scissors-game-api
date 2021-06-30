@@ -26,13 +26,13 @@ class PlayRockPaperScissors
 
   def winning_move(first_move, second_move)
     if (first_move == 'rock' && second_move == 'paper') || (second_move == 'rock' && first_move == 'paper')
-      return 'paper'
+      'paper'
     elsif (first_move == 'rock' && second_move == 'scissors') || (second_move == 'rock' && first_move == 'scissors')
-      return 'rock'
+      'rock'
     elsif (first_move == 'paper' && second_move == 'scissors') || (second_move == 'paper' && first_move == 'scissors')
-      return 'scissors'
+      'scissors'
     else
-      return nil
+      nil
     end
   end
 
