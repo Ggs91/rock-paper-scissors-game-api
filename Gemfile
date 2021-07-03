@@ -33,6 +33,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.1.0'
   gem 'activerecord-reset-pk-sequence'
+  gem 'factory_bot_rails'
+  gem 'faker', '~> 1.9', '>= 1.9.3'
 end
 
 group :development do
