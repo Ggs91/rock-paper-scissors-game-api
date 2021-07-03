@@ -26,5 +26,4 @@ class PlayerInitializer
   def validate_player
     @errors << @player.errors.full_messages unless @player.save
   end
-
 end
