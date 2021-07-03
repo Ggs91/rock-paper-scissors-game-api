@@ -6,7 +6,7 @@ class PlayRockPaperScissors
 
   def perform
     create_bot
-    result = winning_move(@player.hand_move, @bot.hand_move)
+    result = winning_move(@player.move, @bot.move)
     set_winner(result)
     {
       players: [@player, @bot],
@@ -18,7 +18,7 @@ class PlayRockPaperScissors
 
   def create_bot
     bot_move = %w{rock paper scissors}.sample
-    @bot = Player.create(name: 'Bot', hand_move: bot_move)
+    @bot = Player.create(name: 'Bot', move: bot_move)
   end
 
   def winning_move(first_move, second_move)
@@ -35,6 +35,6 @@ class PlayRockPaperScissors
 
   def set_winner(winning_move)
     return if winning_move.nil?
-    @winner = @player.hand_move == winning_move ? @player : @bot
+    @winner = @player.move == winning_move ? @player : @bot
   end
 end
