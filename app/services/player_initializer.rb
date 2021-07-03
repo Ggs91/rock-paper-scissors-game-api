@@ -1,6 +1,6 @@
 class PlayerInitializer
-  def initialize(params)
-    @params = params
+  def initialize(player_params)
+    @player_params = player_params
     @errors = []
   end
 
@@ -20,7 +20,7 @@ class PlayerInitializer
   end
 
   def initialize_player
-    @player = Player.new(name: @params[:name], hand_move: @params[:move])
+    @player = Player.new(@player_params)
   end
 
   def validate_player
