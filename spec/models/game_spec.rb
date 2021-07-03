@@ -9,7 +9,7 @@ RSpec.describe Game, type: :model do
   describe '#result' do
     subject { game.result }
 
-    let(:game) { create(:game) }
+    let(:game) { create(:game, :with_players) }
 
     context 'when game has no winner' do
       it { is_expected.to eq('tie') }
