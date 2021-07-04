@@ -3,8 +3,6 @@ class Api::V1::GamesController < ApplicationController
 
   def index
     @games = Game.order(created_at: :desc).limit(limit).offset(params[:offset])
-
-    render :index, status: :ok
   end
 
   def create
