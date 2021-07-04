@@ -16,9 +16,7 @@ RSpec.describe Game, type: :model do
     end
 
     context 'when game has a winner' do
-      before do
-        game.winner = game.players.first
-      end
+      before { game.winner = game.players.first }
 
       it { is_expected.to eq("#{game.players.first.name} won") }
     end
