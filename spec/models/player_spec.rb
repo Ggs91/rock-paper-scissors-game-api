@@ -7,6 +7,16 @@ RSpec.describe Player, type: :model do
     it { is_expected.to validate_inclusion_of(:move)
                     .in_array(%w(rock paper scissors))
                     .with_message("only 'rock', 'paper' and 'scissors' are accepted") }
-    it { belong_to(:game).optional }
+    it { belong_to(:game) }
+  end
+
+  describe '#bot' do
+    subject { described_class.new.bot }
+
+    it { is_expected.to be_a Player }
+    it { is_expected.to have_attributes(name: 'Bot') }
+    it { is_expected.to have_attributes(move: 'rock')
+                    .or have_attributes(move: 'paper')
+                    .or have_attributes(move: 'scissors') }
   end
 end
