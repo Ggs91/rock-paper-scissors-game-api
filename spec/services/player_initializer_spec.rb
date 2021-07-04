@@ -13,7 +13,7 @@ RSpec.describe PlayerInitializer do
   let(:invalid_name) { '' }
   let(:invalid_move) { 'Roq' }
 
-  describe 'when valid input' do
+  describe 'when valid inputs' do
     it 'persists the player' do
       expect(subject[:player]).to be_persisted
     end
