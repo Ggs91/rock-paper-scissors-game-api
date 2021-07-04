@@ -9,7 +9,7 @@ class Api::V1::GamesController < ApplicationController
 
   def create
     initialized_player = PlayerInitializer.new(player_params).perform
-    if initialized_player[:errors].any?
+    if initialized_player[:errors].present?
       render json: initialized_player[:errors], status: :unprocessable_entity
     else
       @game = Game.new

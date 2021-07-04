@@ -1,7 +1,7 @@
 class PlayerInitializer
   def initialize(player_params)
     @player_params = player_params
-    @errors = []
+    @errors = nil
   end
 
   def perform
@@ -24,6 +24,6 @@ class PlayerInitializer
   end
 
   def validate_player
-    @errors << @player.errors.full_messages unless @player.save
+    @errors = @player.errors.full_messages unless @player.save
   end
 end
