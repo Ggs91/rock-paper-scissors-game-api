@@ -3,7 +3,7 @@ FactoryBot.define do
     trait :with_players do
       after(:build) do |game|
         2.times do
-          game.players << create(:player)
+          create(:player, game: game)
         end
       end
     end
