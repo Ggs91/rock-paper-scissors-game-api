@@ -1,4 +1,4 @@
-class PlayerInitializer
+class PlayersInitializer
   def initialize(player_params)
     @player_params = player_params
     @errors = nil
@@ -6,9 +6,13 @@ class PlayerInitializer
 
   def perform
     create_player
+    create_bot
     {
       errors: @errors,
-      player: @player,
+      players: {
+        player_1: @player,
+        player_2: @bot
+      }
     }
   end
 
@@ -25,5 +29,10 @@ class PlayerInitializer
 
   def validate_player
     @errors = @player.errors.full_messages unless @player.save
+  end
+
+  def create_bot
+    bot_move = %w{rock paper scissors}.sample
+    @bot = Player.create(name: 'Bot', move: bot_move) if @player.persisted?
   end
 end

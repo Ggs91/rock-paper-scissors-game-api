@@ -1,25 +1,20 @@
 class PlayRockPaperScissors
-  def initialize(player)
-    @player = player
+  def initialize(players)
+    @player_1 = players[:player_1]
+    @player_2 = players[:player_2]
     @winner = nil
   end
 
   def perform
-    create_bot
-    result = winning_move(@player.move, @bot.move)
+    result = winning_move(@player_1.move, @player_2.move)
     set_winner(result)
     {
-      players: [@player, @bot],
+      players: [@player_1, @player_2],
       winner: @winner
     }
   end
 
   private
-
-  def create_bot
-    bot_move = %w{rock paper scissors}.sample
-    @bot = Player.create(name: 'Bot', move: bot_move)
-  end
 
   def winning_move(first_move, second_move)
     if (first_move == 'rock' && second_move == 'paper') || (second_move == 'rock' && first_move == 'paper')
@@ -35,6 +30,6 @@ class PlayRockPaperScissors
 
   def set_winner(winning_move)
     return if winning_move.nil?
-    @winner = @player.move == winning_move ? @player : @bot
+    @winner = @player_1.move == winning_move ? @player_1 : @player_2
   end
 end

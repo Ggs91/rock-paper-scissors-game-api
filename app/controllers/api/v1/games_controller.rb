@@ -8,12 +8,12 @@ class Api::V1::GamesController < ApplicationController
   end
 
   def create
-    initialized_player = PlayerInitializer.new(player_params).perform
-    if initialized_player[:errors].present?
-      render json: initialized_player[:errors], status: :unprocessable_entity
+    initialized_players = PlayersInitializer.new(player_params).perform
+    if initialized_players[:errors].present?
+      render json: initialized_players[:errors], status: :unprocessable_entity
     else
       @game = Game.new
-      game_result = PlayRockPaperScissors.new(initialized_player[:player]).perform
+      game_result = PlayRockPaperScissors.new(initialized_players[:players]).perform
       @game.players << game_result[:players]
       @game.winner = game_result[:winner]
 

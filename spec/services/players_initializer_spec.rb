@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe PlayerInitializer do
+RSpec.describe PlayersInitializer do
 
-  subject { PlayerInitializer.new(player_params).perform }
+  subject { PlayersInitializer.new(player_params).perform }
 
   let(:player_params) do
     {
@@ -14,13 +14,14 @@ RSpec.describe PlayerInitializer do
   let(:invalid_move) { 'Roq' }
 
   describe 'when valid inputs' do
-    it 'persists the player' do
-      expect(subject[:player]).to be_persisted
+    it 'persists the players' do
+      expect(subject[:players][:player_1]).to be_persisted
+      expect(subject[:players][:player_2]).to be_persisted
     end
 
     it 'creates player with correct attributes' do
-      expect(subject[:player].name).to eq('Ponky')
-      expect(subject[:player].move).to eq('rock')
+      expect(subject[:players][:player_1].name).to eq('Ponky')
+      expect(subject[:players][:player_1].move).to eq('rock')
     end
   end
 
@@ -28,8 +29,12 @@ RSpec.describe PlayerInitializer do
 
     before { player_params[:name] = invalid_name }
 
-    it "it doesn't persist the player" do
-      expect(subject[:player]).not_to be_persisted
+    it "it doesn't persists the player" do
+      expect(subject[:players][:player_1]).not_to be_persisted
+    end
+
+    it "it doesn't creates the bot" do
+      expect(subject[:players][:player_2]).to be_nil
     end
 
     it 'contains an array of errors' do
