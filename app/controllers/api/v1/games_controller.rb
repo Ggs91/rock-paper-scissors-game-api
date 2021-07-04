@@ -8,8 +8,9 @@ class Api::V1::GamesController < ApplicationController
   end
 
   def create
-    @game = Game.new
-    @game.players.build(player_params)
+    @game = Game.new(
+      players_attributes: [player_params]
+    )
     @game.players << Player.new.bot
 
     if @game.save
