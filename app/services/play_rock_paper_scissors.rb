@@ -1,17 +1,14 @@
 class PlayRockPaperScissors
-  def initialize(players)
-    @player_1 = players[:player_1]
-    @player_2 = players[:player_2]
-    @winner = nil
+  def initialize(game)
+    @game = game
+    @player_1 = @game.players.first
+    @player_2 = @game.players.second
   end
 
   def perform
     result = winning_move(@player_1.move, @player_2.move)
     set_winner(result)
-    {
-      players: [@player_1, @player_2],
-      winner: @winner
-    }
+    @game.update(winner: @winner, played: true)
   end
 
   private
