@@ -36,7 +36,7 @@ RSpec.describe PlayerInitializer do
       expect(subject[:errors]).not_to be_nil
     end
 
-    describe "array of errors" do
+    describe 'array of errors' do
       context 'when invalid name provided' do
         let(:player_invalid_name) { Player.create(user_params) }
 
