@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Game, type: :model do
-  context 'validations' do
+  context 'associations' do
     it { is_expected.to have_many(:players) }
     it { is_expected.to have_one(:winner).class_name('Player') }
   end
@@ -9,7 +9,7 @@ RSpec.describe Game, type: :model do
   describe '#result' do
     subject { game.result }
 
-    let(:game) { create(:game, :with_players) }
+    let(:game) { create(:game) }
 
     context 'when game has no winner' do
       it { is_expected.to eq('tie') }

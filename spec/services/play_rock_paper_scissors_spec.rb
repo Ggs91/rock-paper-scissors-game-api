@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe PlayRockPaperScissors do
 
   describe 'when game has a winner' do
-    let(:game) { create(:game, :with_players) }
+    let(:game) { create(:game) }
 
     before do
       game.players.first.update(move: 'rock')
@@ -21,7 +21,7 @@ RSpec.describe PlayRockPaperScissors do
   end
 
   describe 'when tie game' do
-    let(:game) { create(:game, :with_players) }
+    let(:game) { create(:game) }
 
     before do
       game.players.first.update(move: 'rock')

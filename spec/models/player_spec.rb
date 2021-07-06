@@ -6,7 +6,7 @@ RSpec.describe Player, type: :model do
                     .with_message('Please enter a name') }
     it { is_expected.to validate_inclusion_of(:move)
                     .in_array(%w(rock paper scissors))
-                    .with_message("only 'rock', 'paper' and 'scissors' are accepted") }
+                    .with_message("Only 'rock', 'paper' and 'scissors' are accepted") }
     it { belong_to(:game) }
   end
 

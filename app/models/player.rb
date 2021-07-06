@@ -1,5 +1,5 @@
 class Player < ApplicationRecord
-  validates_presence_of :name, presence: true, message: "Please enter a name"
+  validates_presence_of :name, message: "Please enter a name"
   validates :move, inclusion: { in: %w(rock paper scissors),
     message: "Only 'rock', 'paper' and 'scissors' are accepted" }
 
