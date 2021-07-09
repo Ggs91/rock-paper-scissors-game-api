@@ -1,6 +1,6 @@
 class Player < ApplicationRecord
   validates_presence_of :name, message: "Please enter a name"
-  validates :move, inclusion: { in: %w(rock paper scissors),
+  validates :move, inclusion: { in: Game::MOVES,
     message: "Only 'rock', 'paper' and 'scissors' are accepted" }
 
   belongs_to :game
@@ -15,6 +15,6 @@ class Player < ApplicationRecord
   private
 
   def random_move
-    %w{rock paper scissors}.sample
+    Game::MOVES.sample
   end
 end

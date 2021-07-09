@@ -5,6 +5,7 @@ class Game < ApplicationRecord
   validate :two_players
 
   NB_PLAYERS = 2
+  MOVES = %w{rock paper scissors}
 
   def result
     self.winner.nil? ? 'tie' : "#{self.winner.name} won"
