@@ -11,7 +11,7 @@ class PlayRockPaperScissors
     @game.update(winner: @winner, played: true)
   end
 
-  private
+private
 
   def winning_move(first_move, second_move)
     if (first_move == 'rock' && second_move == 'paper') || (second_move == 'rock' && first_move == 'paper')

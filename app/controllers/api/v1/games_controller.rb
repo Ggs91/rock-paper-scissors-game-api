@@ -6,8 +6,7 @@ class Api::V1::GamesController < ApplicationController
   end
 
   def create
-    @game = Game.new(players_attributes: [player_params])
-    @game.players << Player.new.bot
+    @game = GameInitializer.new(game_params).perform
 
     if @game.save
       PlayRockPaperScissors.new(@game).perform
@@ -18,7 +17,7 @@ class Api::V1::GamesController < ApplicationController
 
   private
 
-  def player_params
+  def game_params
     params.permit(:name, :move)
   end
 
